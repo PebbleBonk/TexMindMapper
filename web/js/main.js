@@ -62,7 +62,7 @@ function setupTexUploader() {
             return;
         }
         if (files.length > 1) {
-            suffix = '+'+files.length+'others';
+            suffix = ' + '+files.length+' others';
         }
         document.getElementById('file-name-title').innerHTML = "File: " + files[0].name + suffix
 
