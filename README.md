@@ -1,6 +1,7 @@
 # TexMindMapper
 Create mind maps from LaTeX files
 
+![UI](doc/tmm.png)
 ## Origin
 Writing a report, thesis, article or similar can get a bit overwhelming. I wanted to have an easy way to visualise what I was actually scribbling.
 
