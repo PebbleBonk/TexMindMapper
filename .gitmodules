@@ -1,0 +1,3 @@
+[submodule "textree"]
+	path = textree
+	url = https://github.com/PebbleBonk/textree.git

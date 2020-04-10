@@ -1,0 +1,63 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" type="image/png" href="web/favicon.png">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <meta content='maximum-scale=1.0, initial-scale=1.0, width=device-width' name='viewport'>
+
+    <!-- FontAwesome! -->
+    <script src="https://kit.fontawesome.com/e07db5a2a2.js" crossorigin="anonymous"></script>
+
+    <!-- Vis.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
+     <!-- Our JavaScripts! -->
+     <script type="module" src="web/js/main.js"></script>
+
+     <link rel="stylesheet" href="web/styles/main.css">
+     <link rel="stylesheet" href="web/styles/graph.css">
+</head>
+<body> <!--  MAH BODY MAH SOUL -->
+    <!-- A grey horizontal navbar that becomes vertical on small screens -->
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark d-flex">
+        <!-- Title -->
+        <a class="navbar-brand p-2" href="#">
+            <div>
+                TexMindMapper
+            </div>
+            <div class="sub-brand" id="file-name-title">
+                No files selected
+            </div>
+        </a>
+
+        <button id="file-input-btn" type="button"  class="btn btn-info p-2">
+            <i class="fas fa-file-image"></i>&nbsp; Choose files
+        </button>
+
+        <form hidden="true" id="file-form" enctype='multipart/form-data' method='POST' action="/dev">
+            <input hidden="true" id="file-input" type='file' name='files[]' multiple />
+        </form>
+
+        <!-- Info circle -->
+        <a href="https://github.com/PebbleBonk/TexMindMapper" class="navbar-icon ml-auto" id="logo-info">
+            <i class="fab fa-github fa-lg"></i>
+        </a>
+
+    </nav>
+
+
+    <div class="container-md content">
+        <div id="graph-area" class="graph-area">
+            <div id="svgcontainer" class="graph-container"></div>
+        </div>
+    </div>
+
+
+</body>  <!--  MAH BODY MAH SOUL -->
+</html>
