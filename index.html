@@ -21,13 +21,20 @@
      <script type="module" src="web/js/main.js"></script>
 
      <link rel="stylesheet" href="web/styles/main.css">
+     <link rel="stylesheet" href="web/styles/navbar.css">
      <link rel="stylesheet" href="web/styles/graph.css">
 </head>
 <body> <!--  MAH BODY MAH SOUL -->
     <!-- A grey horizontal navbar that becomes vertical on small screens -->
     <nav class="navbar navbar-expand-md bg-dark navbar-dark d-flex">
+        <!-- Navbar toggler  -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
         <!-- Title -->
-        <a class="navbar-brand p-2" href="#">
+        <a class="navbar-brand pl-2 pr-2" href="#">
             <div>
                 TexMindMapper
             </div>
@@ -35,12 +42,8 @@
                 No files selected
             </div>
         </a>
-        <!-- Navbar toggler  -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
+        <!-- Clickables -->
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <!-- Opening files -->
@@ -50,10 +53,10 @@
                     </a>
                     <div id="tex-opener-menu" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" id="file-input-btn" href="#">
-                            <i class="fas fa-file-image"></i>&nbsp; Choose files
+                            <i class="fas fa-fw fa-file-image"></i>&nbsp; Choose files
                         </a>
                         <a class="dropdown-item" href="#">
-                            <i class="fas fa-scroll"></i>&nbsp; Load Example
+                            <i class="fas fa-fw fa-scroll"></i>&nbsp; Load example
                         </a>
                         <form hidden="true" id="file-form" enctype='multipart/form-data' method='POST' action="/dev">
                             <input hidden="true" id="file-input" type='file' name='files[]' multiple />
@@ -65,16 +68,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Info</a>
                 </li>
-
-                <!-- Github circle -->
-                <li class="nav-item navbar-icon ml-auto">
-                    <a href="https://github.com/PebbleBonk/TexMindMapper" class="navbar-icon ml-auto" id="logo-info">
-                        <i class="fab fa-github fa-lg"></i>
-                    </a>
-                </li>
-              </ul>
-
         </div>
+        <!-- Github circle -->
+        <a href="https://github.com/PebbleBonk/TexMindMapper" class="navbar-icon ml-auto pr-2" id="logo-info">
+            <i class="fab fa-github fa-lg"></i>
+        </a>
     </nav>
 
 
