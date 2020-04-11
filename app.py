@@ -1,7 +1,5 @@
 from flask import Flask, jsonify, request, render_template, abort, redirect
-import textree as tt
-print("This is tt", tt)
-print("this is HC", dir(tt))
+import pytextree as tt
 import sys
 import re
 
