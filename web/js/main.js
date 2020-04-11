@@ -26,10 +26,9 @@ async function graphFromTexFiles(files) {
     .then((d) => {
         const graph = d['graph'];
         network = visor.createChart("svgcontainer",  window.innerWidth, window.innerHeight, graph);
-        console.log("SUCCESS")
     })
     .catch(function(e) {
-        console.log("Fucked up", e)
+        console.log("Failed creating a graph from the data", e)
     });
 }
 
