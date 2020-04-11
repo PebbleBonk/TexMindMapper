@@ -6,7 +6,7 @@ Create mind maps from LaTeX files
 Writing a report, thesis, article or similar can get a bit overwhelming. I wanted to have an easy way to visualise what I was actually scribbling.
 
 ## Description
-The program iterates the LaTeX file and parses a tree out of it. Uses [`textree`](https://github.com/PebbleBonk/textree) for it. Displays the analysed LaTeX project as a graph with sections and environments as nodes. The solid edges portray the chil-parent relations of the sections and envirinoments, and dashed edges the references between entities.
+The program iterates the LaTeX file and parses a tree out of it. Uses [`pytextree`](https://github.com/PebbleBonk/pytextree) for it. Displays the analysed LaTeX project as a graph with sections and environments as nodes. The solid edges portray the chil-parent relations of the sections and envirinoments, and dashed edges the references between entities.
 
 Built with [`flask`](https://flask.palletsprojects.com/en/1.1.x/) and [`vis.js`](https://visjs.org/)
 
