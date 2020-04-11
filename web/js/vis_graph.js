@@ -1,18 +1,18 @@
 const example_data = {
     "nodes": [
-        {"level": 0, "label": "Root", "id": 0, "parent": 0},
-        {"level": 1, "label": "Child 1", "id": 1, "parent": 0},
-        {"level": 1, "label": "Child 2", "id": 2, "parent": 0},
-        {"level": 2, "label": "Child 1 of Child 2", "id": 3, "parent": 0},
-        {"level": 2, "label": "Child 2 of Child 2", "id": 4, "parent": 2},
-        {"level": 1, "label": "Child 3", "id": 5, "parent": 2},
-        {"level": 1, "label": "Child 4", "id": 6, "parent": 0},
-        {"level": 2, "label": "Child 1 of Child 4", "id": 7, "parent": 0},
-        {"level": 2, "label": "Child 2 of Child 4", "id": 8, "parent": 6}
+        {"value": 20, "group": 0, "label": "Root", "id": 0, "parent": 0},
+        {"value": 8, "group": 1, "label": "Child 1", "id": 1, "parent": 0},
+        {"value": 7, "group": 1, "label": "Child 2", "id": 2, "parent": 0},
+        {"value": 5, "group": 2, "label": "Child 1 of\n Child 2", "id": 3, "parent": 0},
+        {"value": 2, "group": 2, "label": "Child 2 of Child 2", "id": 4, "parent": 2},
+        {"value": 10, "group": 1, "label": "Child 3", "id": 5, "parent": 2},
+        {"value": 14, "group": 1, "label": "Child 4", "id": 6, "parent": 0},
+        {"value": 3, "group": 2, "label": "Child 1 of Child 4", "id": 7, "parent": 0},
+        {"value": 1, "group": 2, "label": "Child 2 of Child 4", "id": 8, "parent": 6}
     ],
     "edges": [
         {"from": 0, "to": 1}, {"from": 0, "to": 2},
-        {"from": 0, "to": 1}, {"from": 0, "to": 2},
+        {"from": 1, "to": 0}, {"from": 2, "to": 0},
         {"from": 2, "to": 3}, {"from": 2, "to": 4},
         {"from": 0, "to": 5}, {"from": 0, "to": 6},
         {"from": 6, "to": 7}, {"from": 6, "to": 8}
@@ -62,8 +62,11 @@ const createChart = function(containerId, w, h, data=null) {
             size: 16,
             scaling: {
                 min: 10,
-                max: 100,
+                max: 300,
                 label: {
+
+                    min: 10,
+                    max: 30,
                     enabled: true
                 }
             }
@@ -79,10 +82,11 @@ const createChart = function(containerId, w, h, data=null) {
         },
         physics: {
             forceAtlas2Based: {
-            gravitationalConstant: -26,
-            centralGravity: 0.005,
-            springLength: 230,
-            springConstant: 0.18
+                gravitationalConstant: -26,
+                centralGravity: 0.005,
+                springLength: 230,
+                springConstant: 0.18,
+                avoidOverlap: 0.5
             },
             // avoidOverlap: 1,
             maxVelocity: 300,
