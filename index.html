@@ -21,13 +21,20 @@
      <script type="module" src="web/js/main.js"></script>
 
      <link rel="stylesheet" href="web/styles/main.css">
+     <link rel="stylesheet" href="web/styles/navbar.css">
      <link rel="stylesheet" href="web/styles/graph.css">
 </head>
 <body> <!--  MAH BODY MAH SOUL -->
     <!-- A grey horizontal navbar that becomes vertical on small screens -->
     <nav class="navbar navbar-expand-md bg-dark navbar-dark d-flex">
+        <!-- Navbar toggler  -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
         <!-- Title -->
-        <a class="navbar-brand p-2" href="#">
+        <a class="navbar-brand pl-2 pr-2" href="#">
             <div>
                 TexMindMapper
             </div>
@@ -36,19 +43,36 @@
             </div>
         </a>
 
-        <button id="file-input-btn" type="button"  class="btn btn-info p-2">
-            <i class="fas fa-file-image"></i>&nbsp; Choose files
-        </button>
+        <!-- Clickables -->
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <!-- Opening files -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Open
+                    </a>
+                    <div id="tex-opener-menu" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" id="file-input-btn" href="#">
+                            <i class="fas fa-fw fa-file-image"></i>&nbsp; Choose files
+                        </a>
+                        <a class="dropdown-item" id="load-example-btn" href="#">
+                            <i class="fas fa-fw fa-scroll"></i>&nbsp; Load example
+                        </a>
+                        <form hidden="true" id="file-form" enctype='multipart/form-data' method='POST' action="/dev">
+                            <input hidden="true" id="file-input" type='file' name='files[]' multiple />
+                        </form>
+                    </div>
+                </li>
 
-        <form hidden="true" id="file-form" enctype='multipart/form-data' method='POST' action="/dev">
-            <input hidden="true" id="file-input" type='file' name='files[]' multiple />
-        </form>
-
-        <!-- Info circle -->
-        <a href="https://github.com/PebbleBonk/TexMindMapper" class="navbar-icon ml-auto" id="logo-info">
+                <!-- Information -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#modal-info">Info</a>
+                </li>
+        </div>
+        <!-- Github circle -->
+        <a href="https://github.com/PebbleBonk/TexMindMapper" class="navbar-icon ml-auto pr-2" id="logo-info">
             <i class="fab fa-github fa-lg"></i>
         </a>
-
     </nav>
 
 
@@ -58,6 +82,50 @@
         </div>
     </div>
 
+
+    <!-- The Ugly Modal Info -->
+    <div class="modal fade" id="modal-info">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header"><h4 class="modal-title">TexMindMapper</h4></div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <p>LaTeX file visualiser.</p>
+                    <h5>Features</h5>
+                    <ol>
+                        <li>Parent-child relations as solid lines</li>
+                        <li>Reference relations as dashed lines</li>
+                        <li>Node size portrays relative word count</li>
+                        <li>Word count visible when hovering over a node</li>
+                        <li>Parses also projects consisting of multiple files</li>
+                    </ol>
+
+                    <h5>Processing your files</h5>
+                    <p>
+                        Simply select the files you want analysed. The script tries to add also
+                        the included texts, taken that the main file ends with "main.tex" (e.g.
+                        my_main.tex)
+                    </p>
+
+                    <h5>Example</h5>
+                    <p>
+                        The example .tex file can be found at the project repository of related
+                        <a href="https://github.com/PebbleBonk/pytextree/blob/master/examples/lorem.tex">pytextree</a>
+                    </p>
+
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 </body>  <!--  MAH BODY MAH SOUL -->
 </html>

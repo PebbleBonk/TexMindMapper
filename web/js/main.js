@@ -1,14 +1,18 @@
 import * as visor from './vis_graph.js';
 
-
 var network=null;
+
 
 document.addEventListener("DOMContentLoaded", function(event) {
     // network = visor.createChart("svgcontainer",  window.innerWidth, window.innerHeight );
     setupTexUploader();
-    document.getElementById('file-input-btn').onclick = function() {
+    // Sets up the open-hidden-input-with-button -combo:
+    document.getElementById('file-input-btn').addEventListener('click', function() {
         document.getElementById('file-input').click();
-    };
+    });
+    // Setup the example laoder:
+    setupExampleLoader();
+
 
 });
 
@@ -26,10 +30,9 @@ async function graphFromTexFiles(files) {
     .then((d) => {
         const graph = d['graph'];
         network = visor.createChart("svgcontainer",  window.innerWidth, window.innerHeight, graph);
-        console.log("SUCCESS")
     })
     .catch(function(e) {
-        console.log("Fucked up", e)
+        console.log("Failed creating a graph from the data", e)
     });
 }
 
@@ -47,7 +50,7 @@ const graphFromTexString = async function(textext) {
         },
         body: JSON.stringify({"tex": textext})
     });
-    return await response.json(); // parses JSON response into native JavaScript objects
+    return response.json(); // parses JSON response into native JavaScript objects
 }
 
 
@@ -70,6 +73,29 @@ function setupTexUploader() {
         graphFromTexFiles(files);
 
     });
+}
+
+
+function setupExampleLoader() {
+    // Set up example loader:
+    document.getElementById('load-example-btn').addEventListener('click', async function() {
+        const texText = await loadExampleTexString();
+        graphFromTexString(texText)
+        .then((d) => {
+            const graph = d['graph'];
+            network = visor.createChart("svgcontainer",  window.innerWidth, window.innerHeight, graph);
+        })
+        .catch(function(e) {
+            console.log("Failed creating a graph from the data", e)
+        });
+    });
+}
+
+
+async function loadExampleTexString() {
+    const example_url = "https://raw.githubusercontent.com/PebbleBonk/pytextree/master/examples/lorem.tex"
+    const response = await fetch(example_url);
+    return response.text().then((txt) => {return txt});
 }
 
 
@@ -112,8 +138,4 @@ async function loadTexProject2String(files, main_file_name='main.tex') {
     }).catch(function(err) {
         console.log(err)
     });
-
-
 }
-
-
